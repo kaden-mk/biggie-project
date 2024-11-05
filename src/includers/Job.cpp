@@ -8,7 +8,7 @@ std::vector<Job> Job::RegisteredJobs;
 Job::Job(std::string newName, std::string realName, int newMinWage, int newMaxWage)
     : name(newName), realName(realName), wageMin(newMinWage), wageMax(newMaxWage)
 {
-    RegisterJob(*this);
+    //RegisterJob(*this);
 }
 
 // this is supposed to give you a random amount depending on the job's minWage and maxWage

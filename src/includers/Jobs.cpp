@@ -6,12 +6,10 @@
 
 void runJobRegistration() {
 	Job jan("jan", "Janitor", 50, 125);
-
-	std::cout << "test";
-
 	jan.SetStartWorkFunction([]() {
 		std::cout << "Janitor starts cleaning..." << std::endl;
 	});
+	Job::RegisterJob(jan);
 
 	return;
 }
