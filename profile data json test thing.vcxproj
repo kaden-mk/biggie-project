@@ -136,7 +136,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\includers\Job.cpp" />
-    <ClCompile Include="src\includers\Jobs.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\includers\User.cpp" />
   </ItemGroup>

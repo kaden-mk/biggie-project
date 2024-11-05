@@ -6,6 +6,7 @@
 
 #include "User.h"
 #include "Job.h"
+#include "Jobs.cpp"
 
 int main()
 {
@@ -48,7 +49,7 @@ int main()
 		// default data
 		Json::Value json;
 		json["name"] = name;
-		json["job"] = "null";
+		json["job"] = "jan";
 		json["cash"] = 100;
 
 		file << json;
@@ -70,6 +71,8 @@ int main()
 	std::cout << "Welcome " << jsonData["name"].asString() << std::endl;
 
 	bool exited = true;
+
+	runJobRegistration();
 
 	// main game, do i have any idea on how to make this look better? nope.
 	while (exited)
