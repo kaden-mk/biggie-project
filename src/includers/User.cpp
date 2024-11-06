@@ -2,11 +2,15 @@
 #include <vector>
 #include <algorithm>
 
+User RegisteredUser;
+
 User::User(std::string newName, std::string newJob, int newCash)
 {
 	name = newName;
 	SetJob(newJob);
 	cash = newCash;
+
+	RegisteredUser = *this;
 }
 
 std::string User::GetJob()
@@ -14,9 +18,18 @@ std::string User::GetJob()
 	return job;
 }
 
-// pls somehow improve this by checking to see if a job exists, should be easy?
-
 void User::SetJob(std::string newJob)
 {
 	job = newJob;
+}
+
+void User::AddCash(int amount)
+{
+	cash += amount;
+	jsonData["money"] = cash;
+}
+
+User User::GetUser()
+{
+	return RegisteredUser;
 }

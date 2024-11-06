@@ -66,6 +66,8 @@ int main()
 	Json::Value jsonData;
 	profile >> jsonData;
 
+	user.jsonData = jsonData;
+
 	admin = jsonData["name"].asString() == "admin";
 
 	std::cout << "Welcome " << jsonData["name"].asString() << std::endl;
@@ -94,7 +96,7 @@ int main()
 					There can be random events with your job allowing you to make a huge amount of money if like a special guest comes in or whatever.
 				*/
 
-				std::string jobName = jsonData["job"].asString();
+				std::string jobName = user.jsonData["job"].asString();
 
 				// this will probably be confusing for people that didnt apply for janitor yet but oh well
 				if (!Job::IsJobRegistered(jobName)) {
