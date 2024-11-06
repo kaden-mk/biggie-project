@@ -7,6 +7,7 @@
 #include <string>
 #include <Windows.h>
 #include <json/json.h>
+#include <User.h>
 
 // registers every job, alongside their data and all that blabbering.
 // this is meant to be a huge script sooooo
@@ -50,7 +51,7 @@ static void runJobRegistration() {
 
 	// job registration
 
-	Job jan("jan", "Janitor", 50, 125);
+	Job jan("jan", "Janitor", 75, 125);
 	jan.SetStartWorkFunction([]() {
 		/*
 			The idea for janitor is very simple.
@@ -109,8 +110,7 @@ static void runJobRegistration() {
 				std::cout << "\nJob successfully finished! You earned: $" << location.payment << std::endl;
 
 				// give money time!!
-
-				User user = User::GetUser();
+				User& user = User::GetUser();
 				user.AddCash(location.payment);
 
 				break;

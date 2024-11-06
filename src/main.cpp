@@ -64,6 +64,7 @@ int main()
 	}
 	
 	Json::Value jsonData;
+	Json::Reader reader;
 	profile >> jsonData;
 
 	user.jsonData = jsonData;
@@ -79,6 +80,10 @@ int main()
 	// main game, do i have any idea on how to make this look better? nope.
 	while (exited)
 	{
+		std::cout << "Saving data...\n";
+		std::cout << user.jsonData["cash"].asInt() << std::endl;
+		reader.parse(profile, user.jsonData);
+
 		int input;
 
 		std::cout << "What would you like to do?\n";
