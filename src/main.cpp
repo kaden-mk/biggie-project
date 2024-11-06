@@ -10,8 +10,10 @@
 
 int main()
 {
+	std::srand(static_cast<unsigned>(std::time(0)));
+
 	User user("NULL", "Unemployed", 100);
-	bool admin = false;
+	bool isAdmin = false;
 
 	std::filesystem::path dir = "data/profile";
 
@@ -33,7 +35,10 @@ int main()
 			std::cin >> password;
 
 			if (password != "SigmaMeal")
+			{
+				isAdmin = true;
 				return 1;
+			}			
 		}
 
 		// creates directories
@@ -53,8 +58,6 @@ int main()
 		json["cash"] = 100;
 
 		file << json;
-
-		file.close();
 	}
 
 	std::ifstream profile("data/profile/profile.json");
@@ -69,16 +72,14 @@ int main()
 
 	user.jsonData = jsonData;
 
-	admin = jsonData["name"].asString() == "admin";
-
 	std::cout << "Welcome " << jsonData["name"].asString() << std::endl;
 
-	bool exited = true;
+	bool exited = false;
 
 	runJobRegistration(user);
 
 	// main game, do i have any idea on how to make this look better? nope.
-	while (exited)
+	while (!exited)
 	{
 		std::cout << "Saving data...\n";
 
@@ -123,7 +124,7 @@ int main()
 					break;
 				}
 			case 3:
-				exited = false;
+				exited = true;
 				break;
 		}
 

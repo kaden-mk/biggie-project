@@ -47,8 +47,6 @@ std::string locations[20] = {
 };
 
 static void runJobRegistration(User& user) {
-	std::srand(static_cast<unsigned>(std::time(0)));
-
 	// job registration
 
 	Job jan("jan", "Janitor", 75, 125);
