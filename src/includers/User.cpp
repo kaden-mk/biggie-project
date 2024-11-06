@@ -13,10 +13,7 @@ void User::SetJob(std::string newJob) {
 }
 
 void User::AddCash(int amount) {
-    std::cout << "Current cash: " << cash << std::endl;
     cash += amount;
-    std::cout << "Updated cash: " << cash << std::endl;
-
     jsonData["cash"] = cash;
 }
 

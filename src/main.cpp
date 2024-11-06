@@ -75,14 +75,12 @@ int main()
 
 	bool exited = true;
 
-	runJobRegistration();
+	runJobRegistration(user);
 
 	// main game, do i have any idea on how to make this look better? nope.
 	while (exited)
 	{
 		std::cout << "Saving data...\n";
-		std::cout << user.jsonData["cash"].asInt() << std::endl;
-		reader.parse(profile, user.jsonData);
 
 		int input;
 
@@ -128,6 +126,16 @@ int main()
 				exited = false;
 				break;
 		}
+
+		std::ofstream outFile("data/profile/profile.json");
+		if (!outFile.is_open()) {
+			std::cerr << "Error opening profile file for saving.\n";
+			return 1;
+		}
+
+		Json::StreamWriterBuilder writer;
+		outFile << Json::writeString(writer, user.jsonData);
+		outFile.close();
 	}
 	
 	profile.close();

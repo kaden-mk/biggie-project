@@ -46,13 +46,13 @@ std::string locations[20] = {
 	"The Moon"
 };
 
-static void runJobRegistration() {
+static void runJobRegistration(User& user) {
 	std::srand(static_cast<unsigned>(std::time(0)));
 
 	// job registration
 
 	Job jan("jan", "Janitor", 75, 125);
-	jan.SetStartWorkFunction([]() {
+	jan.SetStartWorkFunction([&user]() {
 		/*
 			The idea for janitor is very simple.
 			You get 3 different locations, each of them giving you a random payment amount.
@@ -110,7 +110,6 @@ static void runJobRegistration() {
 				std::cout << "\nJob successfully finished! You earned: $" << location.payment << std::endl;
 
 				// give money time!!
-				User& user = User::GetUser();
 				user.AddCash(location.payment);
 
 				break;
