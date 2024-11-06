@@ -16,8 +16,3 @@ void User::AddCash(int amount) {
     cash += amount;
     jsonData["cash"] = cash;
 }
-
-User& User::GetUser() {
-    static User instance;
-    return instance;
-}

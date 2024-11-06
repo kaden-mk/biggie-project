@@ -19,6 +19,4 @@ class User
 		std::string GetJob();
 		void SetJob(std::string newJob);
 		void AddCash(int amount);
-
-		static User& GetUser();
 };
